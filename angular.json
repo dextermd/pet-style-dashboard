@@ -64,6 +64,7 @@
             "styles": [
               "src/styles.scss",
               "src/assets/scss/angular.scss",
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "scripts": [

@@ -1,1 +1,87 @@
-<p>login works!</p>
+<!-- BEGIN login -->
+<div class="login login-v1">
+  <!-- BEGIN login-container -->
+  <div class="login-container">
+    <!-- BEGIN login-header -->
+    <div class="login-header">
+      <div class="brand">
+        <div class="d-flex align-items-center">
+          <span class="logo"></span> <b>Pet Style</b>&nbsp;Admin
+        </div>
+        <small>Панель управления</small>
+      </div>
+      <div class="icon">
+        <i class="fa fa-lock"></i>
+      </div>
+    </div>
+    <!-- END login-header -->
+
+    <!-- BEGIN login-body -->
+    <div class="login-body">
+      <!-- BEGIN login-content -->
+      <div class="login-content fs-13px">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)">
+          <div class="form-floating mb-20px">
+            <input
+              type="email"
+              class="form-control fs-13px h-45px"
+              id="emailAddress"
+              placeholder="Email Address"
+              name="email"
+              ngModel
+              required
+              email
+              #email="ngModel"
+            />
+
+              <label for="emailAddress" class="d-flex">Email Address</label>
+
+              <div *ngIf="email.invalid && email.touched" class="text-danger fs-12px pt-1">
+                <div *ngIf="email.errors?.['required']">Email обязателен.</div>
+                <div *ngIf="email.errors?.['email']">Введите корректный email.</div>
+              </div>
+          </div>
+
+          <div class="form-floating mb-20px">
+            <input
+              type="password"
+              class="form-control fs-13px h-45px"
+              id="password"
+              placeholder="Password"
+              name="password"
+              ngModel
+              required
+              minlength="6"
+              #password="ngModel"
+            />
+            <label for="password" class="d-flex">Password</label>
+            <div *ngIf="password.invalid && email.touched" class="text-danger fs-12px pt-1">
+              <div *ngIf="password.errors?.['required']">Пароль обязателен.</div>
+              <div *ngIf="password.errors?.['minlength']">Пароль должен содержать минимум 6 символов.</div>
+            </div>
+          </div>
+          <div class="form-check mb-20px">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="rememberMe"
+              name="rememberMe"
+              ngModel
+            />
+            <label class="form-check-label" for="rememberMe">
+              Запомнить меня
+            </label>
+          </div>
+          <div class="login-buttons">
+            <button type="submit" class="btn h-45px btn-theme d-block w-100 btn-lg">Войдите в систему</button>
+          </div>
+        </form>
+      </div>
+      <!-- END login-content -->
+    </div>
+    <!-- END login-body -->
+  </div>
+  <!-- END login-container -->
+</div>
+<!-- END login -->

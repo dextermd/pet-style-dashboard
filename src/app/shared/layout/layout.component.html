@@ -25,6 +25,7 @@
       (appSidebarEndToggled)="onAppSidebarEndToggled($event)"
       (appSidebarEndMobileToggled)="onAppSidebarEndMobileToggled($event)"
       [appSidebarTwo]="appSettings.appSidebarTwo"
+      [user]="user"
       *ngIf="!appSettings.appEmpty && !appSettings.appHeaderNone">
     </app-header>
 

@@ -1,4 +1,4 @@
-import {Component, HostListener, Renderer2} from '@angular/core';
+import {Component, HostListener, inject, Injector, Renderer2} from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {NavigationStart, Router, RouterOutlet} from '@angular/router';
@@ -7,6 +7,8 @@ import {AppVariablesService} from '../../../core/services/app-variables.service'
 import {TopMenuComponent} from './components/top-menu/top-menu.component';
 import {HeaderComponent} from './components/header/header.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {User} from '../../../core/model/user.model';
+import {AuthService} from '../../../core/services/auth.service';
 
 
 
@@ -25,7 +27,18 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
-  constructor(private titleService: Title, private router: Router, private renderer: Renderer2, public appSettings: AppSettings, private appVariablesService: AppVariablesService) {
+  authService = inject(AuthService);
+  injector = inject(Injector)
+  isAuthenticated = false
+  user?: User;
+
+  constructor(
+    private titleService: Title,
+    private router: Router,
+    private renderer: Renderer2,
+    public appSettings: AppSettings,
+    private appVariablesService: AppVariablesService
+  ) {
     router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         if (window.innerWidth < 768) {
@@ -37,14 +50,19 @@ export class LayoutComponent {
 
   }
 
-  // window scroll
   appHasScroll: boolean | undefined;
 
   appVariables: any;
 
   ngOnInit() {
+
+    if (this.authService.isAuthenticated()) {
+      this.isAuthenticated = true;
+      this.user = this.authService.getCurrentUser();
+    }
+
     this.appVariables = this.appVariablesService.getAppVariables();
-    // page settings
+
     if (this.appSettings.appDarkMode) {
       this.onAppDarkModeChanged(true);
     }
@@ -83,7 +101,6 @@ export class LayoutComponent {
     this.appHasScroll = top > 0 && this.appSettings.appHeaderFixed;
   }
 
-  // set page minified
   onAppSidebarMinifiedToggled(val: boolean): void {
     this.appSettings.appSidebarMinified = !this.appSettings.appSidebarMinified;
     if (localStorage) {
@@ -91,17 +108,14 @@ export class LayoutComponent {
     }
   }
 
-  // set app sidebar end toggled
   onAppSidebarEndToggled(val: boolean): void {
     this.appSettings.appSidebarEndToggled = !this.appSettings.appSidebarEndToggled;
   }
 
-  // hide mobile sidebar
   onAppSidebarMobileToggled(val: boolean): void {
     this.appSettings.appSidebarMobileToggled = !this.appSettings.appSidebarMobileToggled;
   }
 
-  // toggle right mobile sidebar
   onAppSidebarEndMobileToggled(val: boolean): void {
     this.appSettings.appSidebarEndMobileToggled = !this.appSettings.appSidebarEndMobileToggled;
   }

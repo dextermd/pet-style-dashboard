@@ -2,11 +2,13 @@ import { Routes } from '@angular/router';
 import {LoginComponent} from './pages/login/login.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {LayoutComponent} from './shared/layout/layout.component';
+import {guestGuard} from '../core/guards/guest.guard';
+import {authGuard} from '../core/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'login',
-    //canActivate: [guestGuard],
+    canActivate: [guestGuard],
     component: LoginComponent
   },
   {
@@ -18,6 +20,7 @@ export const routes: Routes = [
         {
           path: 'dashboard',
           //canActivate: [authGuard, adminGuard],
+          canActivate: [authGuard],
           component: DashboardComponent
         },
       ],
