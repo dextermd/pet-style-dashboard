@@ -12,6 +12,7 @@ declare var slideToggle: any;
   imports: [
     NgClass,
     NgIf,
+    NgOptimizedImage,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

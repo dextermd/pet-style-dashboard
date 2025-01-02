@@ -13,7 +13,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   if (authServices.isAuthenticated()) {
     req = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${authServices.getUserToken()}`
+        Authorization: `${authServices.getUserToken()}`
       }
     });
   }
@@ -22,8 +22,9 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
     retry(2),
     catchError((e: HttpErrorResponse) => {
       if (e.status === 401) {
-        localStorage.removeItem(LocalStorage.token);
+        localStorage.removeItem(LocalStorage.accessToken);
         localStorage.removeItem(LocalStorage.currentUser);
+        authServices.isAuthenticated.update(() => false);
         router.navigate(['']).then(r => r);
       }
       const error = e.error || e.statusText;

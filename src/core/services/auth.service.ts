@@ -29,7 +29,7 @@ export class AuthService {
       .pipe(
         map((res: AuthResponse) => {
           if (res && res.accessToken) {
-            localStorage.setItem(LocalStorage.token, res.accessToken);
+            localStorage.setItem(LocalStorage.accessToken, res.accessToken);
             this.isAuthenticated.update(() => true);
             localStorage.setItem(LocalStorage.currentUser, JSON.stringify(res.user));
             this.currentUser.update(() => res.user);
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem(LocalStorage.token);
+    localStorage.removeItem(LocalStorage.accessToken);
     this.isAuthenticated.update(() => false);
     localStorage.removeItem(LocalStorage.currentUser);
     this.currentUser.update(() => ({} as User));
@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   getUserToken() {
-    return localStorage.getItem(LocalStorage.token);
+    return localStorage.getItem(LocalStorage.accessToken);
   }
 
   getCurrentUser() {

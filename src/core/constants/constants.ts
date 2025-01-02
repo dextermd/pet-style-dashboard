@@ -4,10 +4,15 @@ export const ApiEndpoint = {
   Auth: {
     Login: `${apiUrl}/auth/groomer-login`,
   },
-
+  User: {
+    Users: `${apiUrl}/users`,
+  },
+  Pet: {
+    Pets: `${apiUrl}/pets`,
+  }
 }
 
 export const LocalStorage = {
-  token: 'USER_TOKEN',
+  accessToken: 'USER_ACCESS_TOKEN',
   currentUser: 'CURRENT_USER',
 }

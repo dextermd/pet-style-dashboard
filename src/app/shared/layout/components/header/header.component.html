@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Pet Style</b>&nbsp;Admin</a>
+    <a href="/" class="navbar-brand"><span class="navbar-logo mx-1"></span> <b>Pet Style</b>&nbsp;Admin</a>
     <button type="button" class="navbar-mobile-toggler" (click)="toggleAppTopMenuMobile()" *ngIf="this.appSettings.appTopMenu && !this.appSettings.appSidebarNone">
       <span class="fa-stack fa-lg text-inverse">
         <i class="far fa-square fa-stack-2x"></i>
@@ -75,12 +75,12 @@
   <!-- BEGIN nav -->
   <div class="navbar-nav">
     <div class="navbar-item navbar-form">
-      <form action="" method="POST" name="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter keyword" />
-          <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-        </div>
-      </form>
+<!--      <form action="" method="POST" name="search">-->
+<!--        <div class="form-group">-->
+<!--          <input type="text" class="form-control" placeholder="Введите текст" />-->
+<!--          <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>-->
+<!--        </div>-->
+<!--      </form>-->
     </div>
 <!--    <div class="navbar-item dropdown">-->
 <!--      <a href="javascript:" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">-->
@@ -160,7 +160,13 @@
     </div>
     <div class="navbar-item navbar-user dropdown">
       <a href="javascript:" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-<!--        <img ngSrc="../assets/img/user/user-13.jpg" alt="" height="128" width="128"/>-->
+        <img
+          [ngSrc]="user?.image ? user!.image! ?? '' : '../assets/img/user/user-12.jpg'"
+
+          alt=""
+          height="128"
+          width="128"
+        />
         <span>
 					<span class="d-none d-md-inline"> @defer(when user) { {{ user?.name }}}</span>
 					<b class="caret"></b>
