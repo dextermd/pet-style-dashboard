@@ -1,4 +1,4 @@
-@import 'default/styles';
+@import 'google/styles';
 
 /* Ng Scrollbar */
 @include media-breakpoint-up(md) {
@@ -6,14 +6,14 @@
 		& .app-sidebar-content {
 			max-height: initial;
 			height: auto;
-			
+
 			& .ng-scroll-viewport {
 				contain: initial;
 			}
 			& .ng-scroll-viewport-wrapper,
 			& .ng-scrollbar-wrapper,
 			& .ng-scroll-viewport {
-				position: relative;	
+				position: relative;
 			}
 		}
 	}
@@ -58,7 +58,7 @@
 		height: auto;
 		padding: $btn-padding-y $btn-padding-x;
 	}
-	& .fc-event, 
+	& .fc-event,
 	& .fc-event-dot {
 		background: none;
 		border-color: transparent;
@@ -167,7 +167,7 @@ ngb-datepicker {
 .ngx-charts {
 	body & {
 		color: var(--#{$prefix}component-color);
-		
+
 		& .gridline-path {
 			stroke: var(--#{$prefix}component-border-color);
 		}
@@ -184,10 +184,10 @@ ngb-datepicker {
 		}
 		& .legend-labels {
 			background: var(--#{$prefix}light);
-		
+
 			& .legend-label {
 				color: rgba(var(--#{$prefix}component-color-rgb), .5);
-			
+
 				&:hover {
 					color: var(--#{$prefix}component-color);
 				}
@@ -201,20 +201,20 @@ ngb-datepicker {
 .NgxEditor__Wrapper {
 	body & {
 		border: none;
-		
+
 		border-radius: 0;
-		
+
 		& .NgxEditor__MenuBar {
 			background: var(--#{$prefix}light);
 			border: none;
 			padding: rem(10px) $spacer;
 			display: flex;
 			flex-wrap: wrap;
-			
+
 			& .NgxEditor__MenuItem.NgxEditor__MenuItem--Icon,
 			& .NgxEditor__Dropdown  {
 				border-radius: $border-radius;
-				
+
 				&:hover,
 				&:focus {
 					background: var(--#{$prefix}component-dropdown-hover-bg);
@@ -232,7 +232,7 @@ ngb-datepicker {
 		& .NgxEditor {
 			background: var(--#{$prefix}component-bg);
 			color: var(--#{$prefix}component-color);
-			
+
 			& .NgxEditor__Placeholder:before {
 				color: var(--#{$prefix}component-color);
 			}
@@ -249,19 +249,19 @@ ngb-datepicker {
 		border-color: var(--#{$prefix}component-border-color);
 		border-radius: $border-radius;
 		display: block;
-		
+
 		&:hover {
 			border-color: var(--#{$prefix}component-border-color);
 		}
-		
+
 		& .tagify__tag {
 			background: var(--#{$prefix}component-active-bg);
 			color: var(--#{$prefix}component-active-color) !important;
 			border-radius: $border-radius;
-			
+
 			& .tagify__tag_removeBtn {
 				color: rgba(var(--#{$prefix}component-color-rgb), .5);
-				
+
 				&:hover {
 					background: rgba(0,0,0,.5);
 					color: $white;
@@ -272,7 +272,7 @@ ngb-datepicker {
   			line-height: $input-line-height;
   			padding: rem(2px) rem(6px);
   			color: inherit;
-  			
+
 				&:before {
 					display: none;
 				}
@@ -300,11 +300,11 @@ ngb-datepicker {
 			border: none;
 			flex: 1;
 			display: flex;
-		
+
 			& .tagify__tag {
 				background: var(--#{$prefix}component-active-bg);
 				color: var(--#{$prefix}component-active-color);
-			
+
 				& > div {
 					padding-top: rem(3px);
 					padding-bottom: rem(3px);
@@ -356,7 +356,7 @@ ngb-datepicker {
       font-size: 12px;
       font-weight: 500;
       color: $dark;
-			
+
 			&::placeholder {
 				color: lighten($dark, 30%);
 			}
@@ -382,7 +382,7 @@ ngb-datepicker {
 .angular-calendar-inline {
   & .cal-month-view {
   	background: var(--#{$prefix}component-bg);
-  	
+
     & .cal-header {
       border-bottom: 1px solid var(--#{$prefix}component-border-color);
 
@@ -398,7 +398,7 @@ ngb-datepicker {
 
       & .cal-cell-row {
       	border-bottom-color: var(--#{$prefix}component-border-color);
-      	
+
         &:hover {
           background: none;
         }
@@ -524,7 +524,7 @@ ngx-loading-bar {
   padding: 0;
   border-radius: $border-radius-lg;
   box-shadow: 0 6px 30px rgba($black, .2);
-  
+
   @if $enable-rtl {
     direction: rtl;
     text-align: right;
@@ -840,7 +840,7 @@ ngx-loading-bar {
 		background: var(--#{$prefix}component-dropdown-bg) !important;
 		border: none !important;
 		box-shadow: none !important;
-		
+
 		& .sketch-fields {
 			& input {
 				border: 1px solid var(--#{$prefix}component-dropdown-border-color) !important;
@@ -854,7 +854,7 @@ ngx-loading-bar {
 		}
 		& .sketch-swatches {
 			border-color: var(--#{$prefix}component-dropdown-border-color);
-		}	
+		}
 	}
 }
 
@@ -893,10 +893,10 @@ ngx-loading-bar {
 }
 .ngx-datatable.bootstrap {
 	font-size: $font-size-base;
-	
+
 	& .datatable-header {
 		height: auto !important;
-		
+
 		& .datatable-header-inner {
 			& .datatable-header-cell {
 				padding: $table-cell-padding-y $table-cell-padding-x;
@@ -943,7 +943,7 @@ ngx-loading-bar {
 
 			&.datatable-row-even {
 				background: $table-striped-bg;
-				
+
 				.dark-mode & {
 					background: rgba($gray-700, 0.7);
 				}
@@ -1029,9 +1029,9 @@ ngx-loading-bar {
 body {
 	& .jvm-container {
 		position: relative;
-		
-		& .jvm-zoomin, 
-		& .jvm-zoomout, 
+
+		& .jvm-zoomin,
+		& .jvm-zoomout,
 		& .jvm-goback {
 			width: rem(16px);
 			height: rem(16px);
@@ -1043,7 +1043,7 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			
+
 			@if $enable-rtl {
 				left: auto;
 				right: $spacer;
@@ -1058,14 +1058,14 @@ body {
 		}
 		& .jvm-zoomin {
 			top: $card-spacer-x;
-			
+
 			.jvm-without-padding & {
 				top: 0;
 			}
 		}
 		& .jvm-zoomout {
 			top: $card-spacer-x + rem-default(25px);
-			
+
 			.jvm-without-padding & {
 				top: rem(25px);
 			}
@@ -1085,7 +1085,7 @@ body {
 			& .jvm-legend {
 				padding: 0;
 				margin: $card-spacer-x $card-spacer-x 0 0;
-				
+
 				& .jvm-legend-inner {
 					padding: $spacer * .5;
 				}
@@ -1123,14 +1123,14 @@ body {
 			font-size: $h3-font-size;
 			left: $app-content-padding-x !important;
 			border-radius: $border-radius-lg;
-			
+
 			@if $enable-rtl {
 				left: auto !important;
 				right: $app-content-padding-x !important;
 			}
 			@include media-breakpoint-down(md) {
 				left: $app-content-padding-x-sm !important;
-				
+
 				@if $enable-rtl {
 					left: auto !important;
 					right: $app-content-padding-x-sm !important;
@@ -1139,14 +1139,14 @@ body {
 		}
 		& .jvm-zoomin {
 			top: $app-header-height + rem(20px);
-			
+
 			@include media-breakpoint-down(lg) {
 				top: $app-header-height + rem(20px) + rem(30px);
 			}
 		}
 		& .jvm-zoomout {
 			top: $app-header-height + rem(50px);
-			
+
 			@include media-breakpoint-down(lg) {
 				top: $app-header-height + rem(30px) + rem(55px);
 			}

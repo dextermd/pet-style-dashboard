@@ -1,0 +1,53 @@
+import {Component, EventEmitter, Input, Output, Renderer2} from '@angular/core';
+import {AppSettings} from '../../../../../core/services/app-settings.service';
+import {NgClass, NgIf, NgOptimizedImage} from '@angular/common';
+
+declare var slideToggle: any;
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [
+    NgClass,
+    NgIf,
+  ],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
+})
+export class HeaderComponent {
+  @Input() appSidebarTwo: any;
+  @Output() appSidebarEndToggled = new EventEmitter<boolean>();
+  @Output() appSidebarMobileToggled = new EventEmitter<boolean>();
+  @Output() appSidebarEndMobileToggled = new EventEmitter<boolean>();
+
+  constructor(private renderer: Renderer2, public appSettings: AppSettings) {
+  }
+
+  toggleAppSidebarMobile() {
+    this.appSidebarMobileToggled.emit(true);
+  }
+
+  toggleAppSidebarEnd() {
+    this.appSidebarEndToggled.emit(true);
+  }
+
+  toggleAppSidebarEndMobile() {
+    this.appSidebarEndMobileToggled.emit(true);
+  }
+
+  toggleAppTopMenuMobile() {
+    var target = document.querySelector('.app-top-menu');
+    if (target) {
+      slideToggle(target);
+    }
+  }
+
+  toggleAppHeaderMegaMenuMobile() {
+    this.appSettings.appHeaderMegaMenuMobileToggled = !this.appSettings.appHeaderMegaMenuMobileToggled;
+  }
+
+  ngOnDestroy() {
+    this.appSettings.appHeaderMegaMenuMobileToggled = false;
+  }
+
+}
