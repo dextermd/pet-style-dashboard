@@ -6,19 +6,48 @@ import { Injectable } from '@angular/core';
 
 export class AppMenuService {
 	getAppMenus() {
-		return [{
-			'icon': 'fa fa-sitemap',
-			'title': 'Панель управления',
-			'url': 'dashboard',
-		},{
-      'icon': 'fa fa-users',
-      'title': 'Пользователи',
-      'url': 'users'
-    },{
-      'icon': 'fa fa-paw',
-      'title': 'Питомцы',
-      'url': 'pets'
-    }]
+		return [
+      {
+        'icon': 'fa fa-sitemap',
+        'title': 'Панель управления',
+        'url': 'dashboard',
+		  },
+      {
+        'icon': 'fa fa-calendar-days',
+        'title': 'Календарь',
+        'url': 'calendar'
+      },
+      {
+        'icon': 'fa fa-users',
+        'title': 'Пользователи',
+        'url': 'users'
+      },
+      {
+        'icon': 'fa fa-paw',
+        'title': 'Питомцы',
+        'url': 'pets'
+      },
+      {
+        'icon': 'fa fa-scissors',
+        'title': 'Услуги',
+        'url': 'services'
+      },
+      {
+        'icon': 'fa fa-percent',
+        'title': 'Акции',
+        'url': 'promotions'
+      },
+      {
+        'icon': 'fa fa-address-book',
+        'title': 'Записи',
+        'url': 'appointments'
+      },
+      {
+        'icon': 'fa fa-circle-question',
+        'title': 'Вопросы и ответы',
+        'url': 'faq'
+      }
+    ]
     //   {
 		// 	'icon': 'fa fa-gem',
 		// 	'title': 'UI Elements',

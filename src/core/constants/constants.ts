@@ -9,7 +9,10 @@ export const ApiEndpoint = {
   },
   Pet: {
     Pets: `${apiUrl}/pets`,
-  }
+  },
+  Service: {
+    Services: `${apiUrl}/services`,
+  },
 }
 
 export const LocalStorage = {
