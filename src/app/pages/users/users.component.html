@@ -1,0 +1,51 @@
+<!-- BEGIN breadcrumb -->
+<ol class="breadcrumb float-xl-end">
+  <li class="breadcrumb-item"><a [routerLink]="'/'">Панель управления</a></li>
+  <li class="breadcrumb-item active">Пользователи</li>
+</ol>
+<!-- END breadcrumb -->
+<!-- BEGIN page-header -->
+<h1 class="page-header">Пользователи <small> список всех пользователей</small></h1>
+<!-- END page-header -->
+
+<app-panel title="Таблица пользователей" footerClass="pb-0 pt-20px" [noButton]="true" variant="default">
+  <div class="row">
+    <div class="col-lg-4">
+      <input class="form-control" placeholder="Поиск..." (keyup)="updateFilter($event)"/>
+    </div>
+    <div class="col-lg-8 text-center">
+    </div>
+  </div>
+  <ng-container header>
+    <a href="#" class="btn btn-default btn-xs"><i class="fa fa-square-plus me-1"></i> Создать пользователя</a>
+  </ng-container>
+  <ng-container outsideBody>
+    <hr class="m-0 bg-gray-600" />
+    <div class="table-responsive text-nowrap">
+      <ngx-datatable
+        #table
+        class="bootstrap"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="25"
+        [rows]="rows">
+        <ngx-datatable-column name="Имя" [prop]="'name'"></ngx-datatable-column>
+        <ngx-datatable-column name="Емайл" [prop]="'email'"></ngx-datatable-column>
+        <ngx-datatable-column name="Телефон" [prop]="'phone'"></ngx-datatable-column>
+        <ngx-datatable-column name="Роли" [prop]="'roles'">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+           <span  *ngFor="let role of row.roles" [ngClass]="(role.name === 'Administrator' ? 'border-danger text-danger' : 'border-primary text-primary')" class="me-1 badge border  px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> {{ role.name }}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false" [canAutoResize]="false" [draggable]="false" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button class="btn btn-sm btn-primary w-60px me-1" >Edit</button>
+            <button class="btn btn-sm btn-white w-60px" >Delete</button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </ng-container>
+</app-panel>

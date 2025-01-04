@@ -1,0 +1,105 @@
+<!-- BEGIN breadcrumb -->
+<ol class="breadcrumb float-xl-end">
+  <li class="breadcrumb-item"><a [routerLink]="'/'">Панель управления</a></li>
+  <li class="breadcrumb-item active">Услги</li>
+</ol>
+<!-- END breadcrumb -->
+<!-- BEGIN page-header -->
+<h1 class="page-header">Услги <small> список всех услуг</small></h1>
+<!-- END page-header -->
+
+<app-panel title="Таблица услуг" footerClass="pb-0 pt-20px" [noButton]="true" variant="default">
+  <div class="row">
+    <div class="col-lg-4">
+      <input class="form-control" placeholder="Поиск..." (keyup)="updateFilter($event)"/>
+    </div>
+    <div class="col-lg-8 text-center">
+    </div>
+  </div>
+  <ng-container header>
+    <a href="#modal-dialog" class="btn btn-default btn-xs"  data-bs-toggle="modal" (click)="openModalForCreate()"><i class="fa fa-square-plus me-1"></i> Создать услугу</a>
+  </ng-container>
+
+  <ng-container outsideBody>
+    <hr class="m-0 bg-gray-600" />
+    <div class="table-responsive text-nowrap">
+
+      <ngx-datatable
+        #table
+        class="bootstrap"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="25"
+        [rows]="rows">
+        <ngx-datatable-column name="Название" [prop]="'nameRu'"></ngx-datatable-column>
+        <ngx-datatable-column name="Цена" [prop]="'price'"></ngx-datatable-column>
+        <ngx-datatable-column name="Активный" [prop]="'isActive'">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span [ngClass]="(row.isActive ? 'border-primary text-primary' : 'border-danger text-danger')" class="me-1 badge border  px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> {{ row.isActive ? 'Да' : 'Нет' }}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false" [canAutoResize]="false" [draggable]="false" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <a href="#modal-dialog" class="btn btn-sm btn-primary w-60px me-1" data-bs-toggle="modal" (click)="openModalForEdit(row)">Edit</a>
+            <button class="btn btn-sm btn-white w-60px" (click)="deleteService(row.id)">Delete</button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+
+  </ng-container>
+</app-panel>
+
+
+<!-- #modal-dialog -->
+<div class="modal fade" id="modal-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">{{ service.id ? 'Обновить' : 'Создать' }} Услугу</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)">
+
+          <input type="hidden" [(ngModel)]="service.id" name="id">
+
+          <div class="mb-3">
+            <label for="nameRu" class="form-label">Название (RU)</label>
+            <input type="text" class="form-control" id="nameRu" [(ngModel)]="service.nameRu" name="nameRu" required>
+          </div>
+          <div class="mb-3">
+            <label for="nameRo" class="form-label">Название (RO)</label>
+            <input type="text" class="form-control" id="nameRo" [(ngModel)]="service.nameRo" name="nameRo" required>
+          </div>
+          <div class="mb-3">
+            <label for="descriptionRu" class="form-label">Описание (RU)</label>
+            <textarea class="form-control" id="descriptionRu" [(ngModel)]="service.descriptionRu" name="descriptionRu" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="descriptionRo" class="form-label">Описание (RO)</label>
+            <textarea class="form-control" id="descriptionRo" [(ngModel)]="service.descriptionRo" name="descriptionRo" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Цена</label>
+            <input type="number" class="form-control" id="price" [(ngModel)]="service.price" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="duration" class="form-label">Продолжительность (необязательно)</label>
+            <input type="number" class="form-control" id="duration" [(ngModel)]="service.duration" name="duration">
+          </div>
+          <div class="mb-3">
+            <label for="isActive" class="form-label me-1">Активаня услуга? </label>
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="service.isActive" name="isActive">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-success">{{ service.id ? 'Обновить' : 'Создать' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

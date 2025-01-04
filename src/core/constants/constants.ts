@@ -1,18 +1,25 @@
-const apiUrl = 'http://192.168.18.127:3000/api';
+const apiUrl = 'http://192.168.18.127:3000';
 
 export const ApiEndpoint = {
+  ApiUrl: apiUrl,
   Auth: {
-    Login: `${apiUrl}/auth/groomer-login`,
+    Login: `${apiUrl}/api/auth/groomer-login`,
   },
   User: {
-    Users: `${apiUrl}/users`,
+    Users: `${apiUrl}/api/users`,
   },
   Pet: {
-    Pets: `${apiUrl}/pets`,
+    Pets: `${apiUrl}/api/pets`,
   },
   Service: {
-    Services: `${apiUrl}/services`,
+    Services: `${apiUrl}/api/services`,
   },
+  Faq: {
+    Faqs: `${apiUrl}/api/faqs`,
+  },
+  Promotion: {
+    Promotions: `${apiUrl}/api/promotion`,
+  }
 }
 
 export const LocalStorage = {

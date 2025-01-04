@@ -1,0 +1,89 @@
+<!-- BEGIN breadcrumb -->
+<ol class="breadcrumb float-xl-end">
+  <li class="breadcrumb-item"><a [routerLink]="'/'">Панель управления</a></li>
+  <li class="breadcrumb-item active">FAQ</li>
+</ol>
+<!-- END breadcrumb -->
+<!-- BEGIN page-header -->
+<h1 class="page-header">FAQ <small> список всех вопросов и ответов</small></h1>
+<!-- END page-header -->
+
+<app-panel title="Таблица FAQ" footerClass="pb-0 pt-20px" [noButton]="true" variant="default">
+  <div class="row">
+    <div class="col-lg-4">
+      <input class="form-control" placeholder="Поиск..." (keyup)="updateFilter($event)"/>
+    </div>
+    <div class="col-lg-8 text-center">
+    </div>
+  </div>
+  <ng-container header>
+    <a href="#modal-dialog" class="btn btn-default btn-xs"  data-bs-toggle="modal" (click)="openModalForCreate()"><i class="fa fa-square-plus me-1"></i> Создать FAQ</a>
+  </ng-container>
+
+  <ng-container outsideBody>
+    <hr class="m-0 bg-gray-600" />
+    <div class="table-responsive text-nowrap">
+
+      <ngx-datatable
+        #table
+        class="bootstrap"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="25"
+        [rows]="rows">
+        <ngx-datatable-column name="Вопрос (RU)" [prop]="'questionRu'"></ngx-datatable-column>
+        <ngx-datatable-column name="Ответ (RU)" [prop]="'answerRu'"></ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false" [canAutoResize]="false" [draggable]="false" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <a href="#modal-dialog" class="btn btn-sm btn-primary w-60px me-1" data-bs-toggle="modal" (click)="openModalForEdit(row)">Edit</a>
+            <button class="btn btn-sm btn-white w-60px" (click)="deleteFaq(row.id)">Delete</button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+
+  </ng-container>
+</app-panel>
+
+
+<!-- #modal-dialog -->
+<div class="modal fade" id="modal-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">{{ faq.id ? 'Обновить' : 'Создать' }} FAQ</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)">
+
+          <input type="hidden" [(ngModel)]="faq.id" name="id">
+
+          <div class="mb-3">
+            <label for="questionRu" class="form-label">Вопрос (RU)</label>
+            <input type="text" class="form-control" id="questionRu" [(ngModel)]="faq.questionRu" name="questionRu" required>
+          </div>
+          <div class="mb-3">
+            <label for="questionRo" class="form-label">Вопрос (RO)</label>
+            <input type="text" class="form-control" id="questionRo" [(ngModel)]="faq.questionRo" name="questionRo" required>
+          </div>
+          <div class="mb-3">
+            <label for="answerRu" class="form-label">Ответ (RU)</label>
+            <textarea class="form-control" id="answerRu" [(ngModel)]="faq.answerRu" name="answerRu" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="answerRo" class="form-label">Ответ (RO)</label>
+            <textarea class="form-control" id="answerRo" [(ngModel)]="faq.answerRo" name="answerRo" rows="3" required></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-success">{{ faq.id ? 'Обновить' : 'Создать' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
