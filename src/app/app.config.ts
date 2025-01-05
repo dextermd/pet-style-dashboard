@@ -6,7 +6,6 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import { provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideToastr} from 'ngx-toastr';
 import {httpInterceptor} from '../core/interceptors/http.interceptor';
-import {provideHighlightOptions} from 'ngx-highlightjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,9 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([httpInterceptor])),
-    provideHighlightOptions({
-      fullLibraryLoader: () => import('highlight.js')
-    }),
     provideToastr(),
     provideHttpClient(),
 ]
