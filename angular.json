@@ -47,7 +47,7 @@
             },
             "outputPath": "/var/www/petstyle.dextermd.dev",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "browser": "",
             "polyfills": [
               "zone.js"
             ],
