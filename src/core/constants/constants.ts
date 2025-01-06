@@ -1,5 +1,5 @@
 // const apiUrl = 'http://192.168.18.127:3000'; // Home
-const apiUrl = 'http://49.13.141.22:3000'; // Production
+const apiUrl = 'http://localhost:3000'; // Production
 
 export const ApiEndpoint = {
   ApiUrl: apiUrl,
