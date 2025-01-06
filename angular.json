@@ -45,9 +45,8 @@
                 "silenceDeprecations": ["color-functions", "global-builtin", "import", "mixed-decls"]
               }
             },
-            "outputPath": "dist/pet-style-dashboard",
+            "outputPath": "/var/www/petstyle.dextermd.dev",
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
