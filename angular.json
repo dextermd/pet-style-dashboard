@@ -37,7 +37,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules", "src/assets/"],
@@ -45,12 +45,12 @@
                 "silenceDeprecations": ["color-functions", "global-builtin", "import", "mixed-decls"]
               }
             },
-            "options": {
-              "outputPath": "dist",
-              "index": "src/index.html",
-              "main": "src/main.ts"
+            "outputPath": {
+              "base": "/var/www/petstyle.dextermd.dev",
+              "browser": ""
             },
-
+            "index": "src/index.html",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
