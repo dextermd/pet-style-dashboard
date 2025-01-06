@@ -1,5 +1,5 @@
 // const apiUrl = 'http://192.168.18.127:3000'; // Home
-const apiUrl = 'https://petstyle.dextermd.dev'; // Production
+const apiUrl = 'https://fgjhvjvjhvjhv'; // Production
 
 export const ApiEndpoint = {
   ApiUrl: apiUrl,
