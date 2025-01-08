@@ -55,7 +55,7 @@
               #password="ngModel"
             />
             <label for="password" class="d-flex">Password</label>
-            <div *ngIf="password.invalid && email.touched" class="text-danger fs-12px pt-1">
+            <div *ngIf="password.invalid && password.touched" class="text-danger fs-12px pt-1">
               <div *ngIf="password.errors?.['required']">Пароль обязателен.</div>
               <div *ngIf="password.errors?.['minlength']">Пароль должен содержать минимум 6 символов.</div>
             </div>
@@ -74,7 +74,7 @@
             </label>
           </div>
           <div class="login-buttons">
-            <button type="submit" class="btn h-45px btn-theme d-block w-100 btn-lg">Войдите в систему</button>
+            <button type="submit" [disabled]="f.invalid" class="btn h-45px btn-theme d-block w-100 btn-lg">Войдите в систему</button>
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import {ColumnMode, DatatableComponent, NgxDatatableModule} from '@swimlane/ngx-
 import {ServiceService} from '../../../core/services/service.service';
 import {PanelComponent} from '../../shared/layout/components/panel/panel.component';
 import {RouterLink} from '@angular/router';
-import {NgClass} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Service} from '../../../core/model/service.model';
 
@@ -12,13 +12,14 @@ declare const bootstrap: any;
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [
-    NgxDatatableModule,
-    PanelComponent,
-    RouterLink,
-    NgClass,
-    FormsModule
-  ],
+    imports: [
+        NgxDatatableModule,
+        PanelComponent,
+        RouterLink,
+        NgClass,
+        FormsModule,
+        NgIf
+    ],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
@@ -113,4 +114,8 @@ export class ServicesComponent implements OnInit {
     }
   }
 
+  validatePriceInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/[^0-9-]/g, '');
+  }
 }
