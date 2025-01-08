@@ -75,7 +75,7 @@ export class ServicesComponent implements OnInit {
        await this.getAllServices();
 
        this.service = {} as Service;
-       this.closeModal();
+       this.closeModal(f);
      } catch (error) {
        console.error('Ошибка при сохранении услуги:', error);
      }
@@ -89,10 +89,12 @@ export class ServicesComponent implements OnInit {
     this.service = {} as Service;
   }
 
-  closeModal() {
+  closeModal(f: NgForm) {
     const modalElement = document.getElementById('modal-dialog');
     const modalInstance = bootstrap.Modal.getInstance(modalElement);
     modalInstance.hide();
+    f.reset();
+
   }
 
   async getAllServices() {
@@ -112,10 +114,5 @@ export class ServicesComponent implements OnInit {
     } catch (error) {
       console.error('Ошибка при удалении услуги:', error);
     }
-  }
-
-  validatePriceInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/[^0-9-]/g, '');
   }
 }

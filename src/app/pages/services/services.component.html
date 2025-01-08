@@ -82,14 +82,6 @@
               <div *ngIf="nameRo.errors?.['minlength']">Минимум 4 символа.</div>
             </div>
           </div>
-<!--          <div class="mb-3">-->
-<!--            <label for="descriptionRu" class="form-label">Описание (RU)</label>-->
-<!--            <textarea class="form-control" id="descriptionRu" [(ngModel)]="service.descriptionRu" name="descriptionRu" rows="3"></textarea>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="descriptionRo" class="form-label">Описание (RO)</label>-->
-<!--            <textarea class="form-control" id="descriptionRo" [(ngModel)]="service.descriptionRo" name="descriptionRo" rows="3"></textarea>-->
-<!--          </div>-->
           <div class="mb-3">
             <label for="price" class="form-label">Цена</label>
             <input
@@ -100,12 +92,9 @@
               name="price"
               required
               #price="ngModel"
-              pattern="^[0-9-]*$"
-              (input)="validatePriceInput($event)"
             >
             <div *ngIf="price.invalid && price.touched" class="text-danger fs-12px pt-1">
               <div *ngIf="price.errors?.['required']">Поле обязательно для заполнения.</div>
-              <div *ngIf="price.errors?.['pattern']">Введите корректную цену.</div>
             </div>
           </div>
 <!--          <div class="mb-3">-->
