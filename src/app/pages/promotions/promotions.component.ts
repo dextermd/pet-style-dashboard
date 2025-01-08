@@ -144,7 +144,7 @@ export class PromotionsComponent implements OnInit {
   }
 
   promotionImageUrl(promotion: any): string {
-    return `${ApiEndpoint.ApiUrl}/promotions/${promotion.image}`;
+    return `${ApiEndpoint.ApiUrl}/uploads/promotions/${promotion.image}`;
   }
 
   formatDateFromTimestamp(timestamp: any): string {
